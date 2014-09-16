@@ -9,32 +9,36 @@ import shutil
 
 
 SCRIPTPATH = os.getcwd()
-INPUTFOLDER = SCRIPTPATH + "/input"
-OUTPUTFOLDER = SCRIPTPATH + "/output"
+INPUTFOLDER = SCRIPTPATH + "/input_original"
+OUTPUTFOLDER = SCRIPTPATH + "/output_lowres"
 
 
 def run():
     """Run the main program"""
-    print("Moving files to output folder & creating lowres versions...")
-    for directory, subdirectories, files in os.walk(INPUTFOLDER):
-        print(directory)
-        for thefile in files:
-            os.chdir(directory)
-            if not "_lowres" in thefile:
-                outputfile = thefile + "_lowres.jpg"
-                os.system("convert -gaussian-blur 0.03 -quality 75% -resize 1280"
-                            + " " + thefile
-                            + " " + outputfile)
-                dirs = os.path.split(directory)
-                dirs = dirs[1]
-                target = os.path.join(OUTPUTFOLDER, dirs)
-                print("Creating: " + dirs + "/" + outputfile)
-                if not os.path.exists(target):
-                    os.mkdir(target)
-                if os.path.exists(outputfile):
-                    shutil.move(outputfile, target + "/" + outputfile)
-            os.chdir(INPUTFOLDER)
+    create_folders()
+    for (everyfile)
+        get_type()
+        define_work()
+        convert()
+        report()
 
+def report():
+    """Calculate the progress, file size, ..."""
+
+def create_folders():
+    """Duplicate the input folder structure in the output folder"""
+
+def get_type(filename):
+    """Detect the file type (image/video,...)"""
+    pass
+
+def convert(filename, filetype):
+    """Convert the file to a 'lowres' version"""
+    pass
+
+def define_work(filename)
+    """Analyse the file and decide what to do"""
+    pass
 
 def get_size(start_path='.'):
     """ Calculate folder size """
@@ -44,7 +48,6 @@ def get_size(start_path='.'):
             filepointer = os.path.join(dirpath, inputfile)
             total_size += os.path.getsize(filepointer)
     return float(total_size)
-
 
 if __name__ == "__main__":
     sys.exit(run())
