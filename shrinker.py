@@ -17,38 +17,40 @@ class MultimediaShrinker:
     """ Contains all the code for the tool """
 
     def __init__(self):
-        self.settings =
+        self.thefile = ""
+        self.filetype = ""
 
     def run(self):
         """Run the main program"""
-        create_folders()
-        for (everyfile)
-            get_type()
-            define_work()
-            convert()
-            report()
+        self.create_folders()
+        """for every file"""
+        self.get_type(self.thefile)
+        self.define_work(self.thefile, self.filetype)
+        self.convert(self.thefile, self.filetype)
+        self.report(self.thefile, self.filetype)
 
-    def report():
+    def report(self, filename, filetype):
         """Calculate the progress, file size, ..."""
         pass
 
-    def create_folders():
+    def create_folders(self):
         """Duplicate the input folder structure in the output folder"""
         pass
+        #shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False)
 
-    def get_type(filename):
+    def get_type(self, filename):
         """Detect the file type (image/video,...)"""
         pass
 
-    def convert(filename, filetype):
-        """Convert the file to a 'lowres' version"""
-        pass
-
-    def define_work(filename)
+    def define_work(self, filename, filetype):
         """Analyse the file and decide what to do"""
         pass
 
-    def get_size(start_path='.'):
+    def convert(self, filename, filetype):
+        """Convert the file to a 'lowres' version"""
+        pass
+
+    def get_size(self, start_path='.'):
         """ Calculate folder size """
         total_size = 0
         for dirpath, dirnames, filenames in os.walk(start_path):
@@ -58,5 +60,5 @@ class MultimediaShrinker:
         return float(total_size)
 
 if __name__ == "__main__":
-    shrinker = MultimediaShrinker()
-    sys.exit(shrinker.run())
+    Shrinker = MultimediaShrinker()
+    sys.exit(Shrinker.run())
