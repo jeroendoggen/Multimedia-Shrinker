@@ -7,11 +7,7 @@ import os
 import sys
 import shutil
 
-
-SCRIPTPATH = os.getcwd()
-INPUTFOLDER = SCRIPTPATH + "/input_original"
-OUTPUTFOLDER = SCRIPTPATH + "/output_lowres"
-
+# TODO: check for un-changed folders and ignore these: (re-use code from 'LaTeX Handouts Builder)
 
 class MultimediaShrinker:
     """ Contains all the code for the tool """
@@ -19,6 +15,9 @@ class MultimediaShrinker:
     def __init__(self):
         self.thefile = ""
         self.filetype = ""
+        self.scriptpath = os.getcwd()
+        self.inputfolder = self.scriptpath + "/input_original"
+        self.outputfolder = self.scriptpath + "/output_lowres2"
 
     def run(self):
         """Run the main program"""
@@ -35,7 +34,7 @@ class MultimediaShrinker:
 
     def create_folders(self):
         """Duplicate the input folder structure in the output folder"""
-        pass
+        shutil.copytree(self.inputfolder, self.outputfolder)
         #shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False)
 
     def get_type(self, filename):
