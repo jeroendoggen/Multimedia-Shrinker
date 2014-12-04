@@ -18,9 +18,12 @@ class MultimediaShrinker:
         self.scriptpath = os.getcwd()
         self.inputfolder = self.scriptpath + "/input_original"
         self.outputfolder = self.scriptpath + "/output_lowres2"
+        self.infos = []
+        self.itemcounter = 0
 
     def run(self):
         """Run the main program"""
+        self.getInfo(self.inputfolder)
         self.create_folders()
         """for every file"""
         self.get_type(self.thefile)
@@ -28,13 +31,23 @@ class MultimediaShrinker:
         self.convert(self.thefile, self.filetype)
         self.report(self.thefile, self.filetype)
 
+    def getInfo(self, currentDir):
+        for item in os.walk(self.inputfolder, "*"):
+            self.infos.append(item)
+            self.itemcounter = self.itemcounter + 1
+        for item in (self.infos):
+            print(item)
+        #print(self.infos)
+        print(self.itemcounter)
+
     def report(self, filename, filetype):
         """Calculate the progress, file size, ..."""
         pass
 
     def create_folders(self):
         """Duplicate the input folder structure in the output folder"""
-        shutil.copytree(self.inputfolder, self.outputfolder)
+        pass
+        #shutil.copytree(self.inputfolder, self.outputfolder)
         #shutil.copytree(src, dst, symlinks=False, ignore=None, copy_function=copy2, ignore_dangling_symlinks=False)
 
     def get_type(self, filename):
